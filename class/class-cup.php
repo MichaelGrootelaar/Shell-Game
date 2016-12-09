@@ -10,6 +10,7 @@
     * @var string
     */
     private $type;
+    const type = 'plastic';
     /**
     * The position of the cup.
     * @var boolean
@@ -32,7 +33,7 @@
     * @param $type
     * @return void
     */
-    function __construct($color, $type, $id) {
+    function __construct($color, $type = self::type, $id) {
       $this->setColor($color);
       $this->setType($type);
       $this->setId($id);
@@ -127,7 +128,7 @@
     * Shows a cup.
     * @return string
     */
-    function show() {
+    function __toString() {
       if ($this->getPositionUp()) {
         $position = 'liftup';
         $function = $this->putDown();
@@ -136,7 +137,13 @@
         $function = $this->liftUp();
       }
 
-      return '<a href="?show_cup='.$this->getId().'"><div class="cup '.$this->getColor().' '.$position.'">'.$this->getBall().'</div></a>';
+      if (self::type == 'glass') {
+        $color = '';
+      } else {
+        $color = $this->getColor();
+      }
+
+      return '<a href="?show_cup='.$this->getId().'"><div class="cup '.$color.' '.$position.'">'.$this->getBall().'</div></a>';
     }
 
     /**

@@ -26,7 +26,7 @@
 
     /**
     * Gets the amount per game.
-    * @return string
+    * @return float
     */
     function getAmountPerGame() {
       return $this->amountPerGame;
@@ -59,7 +59,7 @@
     * @return void
     */
     function ballUnderCup($cupArray, $ball, $number) {
-      $cupArray[$number]->setBall($ball->show());
+      $cupArray[$number]->setBall($ball);
     }
 
     /**

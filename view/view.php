@@ -6,15 +6,13 @@
 
   <body>
     <?php echo $message; ?>
-    
-    <div class="cups">
-      <?php foreach ($cupArray as $cup) { echo $cup->show(); } ?>
 
-      <div class="clear"></div>
+    <div class="cups">
+      <?php foreach ($cupArray as $cup) { echo $cup; } ?>
     </div>
 
     <div class="player">
-      <?php echo $player->show(); ?>
+      <?php echo $player; ?>
     </div>
   </body>
 </html>

@@ -8,7 +8,7 @@
 
     /**
     * Constructs the ball.
-    * @param $color
+    * @param string $color
     * @return void
     */
     function __construct($color) {
@@ -17,7 +17,7 @@
 
     /**
     * Sets the color of the ball.
-    * @param $color
+    * @param string $color
     * @return void
     */
     function setColor($color) {
@@ -36,7 +36,7 @@
     * Shows the ball.
     * @return string
     */
-    function show() {
+    function __toString() {
       return '<div class="ball '.$this->getColor().'"></div>';
     }
   }
