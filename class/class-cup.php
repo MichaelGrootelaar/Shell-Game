@@ -20,6 +20,11 @@
     * @var object
     */
     private $ball = null;
+    /**
+    * The ID of the cup.
+    * @var string
+    */
+    private $id;
 
     /**
     * Constructs a cup.
@@ -27,9 +32,10 @@
     * @param $type
     * @return void
     */
-    function __construct($color, $type) {
+    function __construct($color, $type, $id) {
       $this->setColor($color);
       $this->setType($type);
+      $this->setId($id);
     }
 
     /**
@@ -84,6 +90,23 @@
     }
 
     /**
+    * Sets the ID for the cup.
+    * @param $id
+    * @return void
+    */
+    function setId($id){
+      $this->id = $id;
+    }
+
+    /**
+    * Gets the ID from the cup.
+    * @return string
+    */
+    function getId(){
+      return $this->id;
+    }
+
+    /**
     * Sets the ball object.
     * @param $ball
     * @return void
@@ -113,7 +136,7 @@
         $function = $this->liftUp();
       }
 
-      return '<div class="cup '.$this->getColor().' '.$position.'">'.$this->getBall().'</div>';
+      return '<a href="?show_cup='.$this->getId().'"><div class="cup '.$this->getColor().' '.$position.'">'.$this->getBall().'</div></a>';
     }
 
     /**

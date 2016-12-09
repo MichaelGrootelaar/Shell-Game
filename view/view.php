@@ -5,13 +5,10 @@
   </head>
 
   <body>
+    <?php echo $message; ?>
+    
     <div class="cups">
-
-      <?php
-        foreach ($cupArray as $cup) {
-          echo $cup->show();
-        }
-      ?>
+      <?php foreach ($cupArray as $cup) { echo $cup->show(); } ?>
 
       <div class="clear"></div>
     </div>
