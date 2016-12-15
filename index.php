@@ -15,7 +15,7 @@
 
   $game = new Game(20);
 
-  $cupArray = [new Cup('yellow','glass',0), new Cup('yellow','plastic',1), new Cup('yellow','plastic',2)];
+  $cupArray = [new Cup('yellow','plastic',0), new Cup('yellow','plastic',1), new Cup('yellow','plastic',2)];
 
   if (isset($_GET['show_cup'])) {
     $cupArray[$_GET['show_cup']]->liftUp();
@@ -37,7 +37,7 @@
     $message = "Kies een beker!";
   }
 
-    $player = new Player('Michael Grootelaar', $amount);
+    $player = new HumanPlayer('Michael Grootelaar', $amount);
 
   include('view/view.php');
 ?>

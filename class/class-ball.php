@@ -1,5 +1,9 @@
 <?php
-  class Ball {
+  interface BallCheck {
+      function __toString();
+  }
+
+  final class Ball implements BallCheck {
     /**
     * Color of the ball.
     * @var string

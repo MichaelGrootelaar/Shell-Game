@@ -1,5 +1,12 @@
 <?php
-  class Cup {
+  interface CupCheck {
+    function setBall($ball);
+    function liftUp();
+    function putDown();
+    function __toString();
+  }
+
+  class Cup implements CupCheck {
     /**
     * The color of the cup.
     * @var string
@@ -10,7 +17,8 @@
     * @var string
     */
     private $type;
-    const type = 'plastic';
+    const TYPE_PLASTIC = 'plastic';
+    const TYPE_GLASS = 'glass';
     /**
     * The position of the cup.
     * @var boolean
@@ -33,7 +41,7 @@
     * @param $type
     * @return void
     */
-    function __construct($color, $type = self::type, $id) {
+    function __construct($color, $type = TYPE_PLASTIC, $id) {
       $this->setColor($color);
       $this->setType($type);
       $this->setId($id);
@@ -137,7 +145,7 @@
         $function = $this->liftUp();
       }
 
-      if (self::type == 'glass') {
+      if ($this->getType() == 'glass') {
         $color = '';
       } else {
         $color = $this->getColor();

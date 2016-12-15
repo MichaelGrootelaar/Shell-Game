@@ -1,5 +1,8 @@
 <?php
-  class Player {
+  abstract class Player {
+    // You need to choose between 2 classes "HumanPlayer" or "ComputerPlayer".
+    abstract function __toString();
+
     /**
     * The name of the player.
     * @var string
@@ -55,13 +58,33 @@
     function getAmount() {
       return $this->amount;
     }
+  }
+
+  class HumanPlayer extends Player {
+    /**
+    * Constructs the human player.
+    * @return void
+    */
+    function __construct($name, $amount) {
+      parent::__construct($name, $amount);
+    }
 
     /**
-    * Shows the player.
+    * Shows the human player.
     * @return string
     */
     function __toString() {
       return '<b>'.$this->getname().':'.$this->getAmount().'</b>';
+    }
+  }
+
+  class ComputerPlayer extends Player {
+    /**
+    * Shows the computer player.
+    * @return string
+    */
+    function __toString() {
+      return "";
     }
   }
 ?>
