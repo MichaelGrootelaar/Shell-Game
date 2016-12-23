@@ -13,6 +13,16 @@
     * @var float
     */
     private $amount;
+    /**
+    * Id of the player.
+    * @var float
+    */
+    private $id;
+    /**
+    * Options of the player.
+    * @var object
+    */
+    private $options;
 
     /**
     * Constructs a player.
@@ -20,9 +30,10 @@
     * @param float $amount
     * @return void
     */
-    function __construct($name, $amount) {
+    function __construct($name, $amount, $id) {
       $this->setName($name);
       $this->setAmount($amount);
+      $this->setId($id);
     }
 
     /**
@@ -33,7 +44,6 @@
     function setName($name) {
       $this->name = $name;
     }
-
     /**
     * Gets the name of the player.
     * @return string
@@ -50,13 +60,44 @@
     function setAmount($amount) {
       $this->amount = $amount;
     }
-
     /**
     * Gets the amount of the player.
     * @return float
     */
     function getAmount() {
       return $this->amount;
+    }
+
+    /**
+    * Sets the id of the player.
+    * @param $id float
+    * @return void
+    */
+    function setId($id){
+      $this->id = $id;
+    }
+    /**
+    * Gets the id of the player.
+    * @return float
+    */
+    function getId(){
+      return $this->id;
+    }
+
+    /**
+    * Sets the options of the player.
+    * @param $options object
+    * @return void
+    */
+    function setOptions($options){
+      $this->options = $options;
+    }
+    /**
+    * Gets the options of the player.
+    * @return object
+    */
+    function getOptions(){
+      return $this->options;
     }
   }
 

@@ -46,7 +46,7 @@
     * @return void
     */
     function downCups($cupArray) {
-      for ($i=0;$i<3;$i++) {
+      for ($i=0;$i<count($cupArray);$i++) {
         $cupArray[$i]->putDown();
       }
     }
@@ -71,11 +71,34 @@
     function start($cupArray, $ball) {
       $this->downCups($cupArray);
 
-      $randomNumber = $this->randomNumber();
+      $numberArray = [];
 
-      $this->ballUnderCup($cupArray, $ball, $randomNumber);
+      for ($i=0;$i<count($cupArray);$i++) {
+        $randomNumber = $this->randomNumber();
 
-      $_SESSION['ball'] = $randomNumber;
+        $this->ballUnderCup($cupArray, $ball, $randomNumber);
+
+        array_push($numberArray, $randomNumber);
+      }
+
+      $_SESSION['ball'] = $numberArray;
+    }
+
+    /**
+    * Makes array of cups for game.
+    * @param $amount float
+    * @param $type string
+    * @param $color string
+    * @return array
+    */
+    function cupArray($amount, $type, $color){
+      $cupArray = [];
+
+      for ($i=0;$i<$amount;$i++) {
+        array_push($cupArray, new Cup($color, $type, $i));
+      }
+
+      return $cupArray;
     }
   }
 ?>
