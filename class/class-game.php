@@ -68,13 +68,17 @@
     * @param object $ball
     * @return void
     */
-    function start($cupArray, $ball) {
+    function start($cupArray, $ball, $options) {
       $this->downCups($cupArray);
 
       $numberArray = [];
 
-      for ($i=0;$i<count($cupArray);$i++) {
+      for ($i=0;$i<count($options[1]);$i++) {
         $randomNumber = $this->randomNumber();
+
+        while (!in_array($randomNumber, $numberArray)) {
+          $randomNumber = $this->randomNumber();
+        }
 
         $this->ballUnderCup($cupArray, $ball, $randomNumber);
 

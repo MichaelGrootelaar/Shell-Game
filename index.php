@@ -5,8 +5,9 @@
   require_once('class/class-cup.php');
   require_once('class/class-game.php');
 
-  $amount = (isset($_COOKIE['amount'])) ? $_COOKIE['amount'] : 0;
+  $amount = (isset($_SESSION['amount'])) ? $_SESSION['amount'] : 0;
   $options = (isset($_SESSION['options'])) ? $_SESSION['options'] : [3, 1];
+  $player = (isset($_SESSION['players'])) ? $_SESSION['players'] : new HumanPlayer("Michael Grootelaar",0);
 
   $ball = new Ball('red');
   $game = new Game(20);
@@ -17,23 +18,19 @@
     $cupArray[$_GET['show_cup']]->liftUp();
 
     if (in_array($_GET['show_cup'], $_SESSION['ball'])) {
-      $amount = $amount + $game->getAmountPerGame();
+      $_SESSION['amount'] = $amount + $game->getAmountPerGame();
       $game->ballUnderCup($cupArray, $ball, $_GET['show_cup']);
 
       $message = "Goed gegokt!";
-      setcookie('amount', $amount);
     } else {
-      $amount = $amount - $game->getAmountPerGame();
+      $_SESSION['amount'] = $amount - $game->getAmountPerGame();
 
       $message = "Fout gegokt!";
-      setcookie('amount', $amount);
     }
   } else {
-    $game->start($cupArray, $ball);
+    $game->start($cupArray, $ball, $options);
     $message = "Kies een beker!";
   }
-
-  $player = new HumanPlayer('Michael Grootelaar', $amount);
 
   include('view/view.php');
 ?>
